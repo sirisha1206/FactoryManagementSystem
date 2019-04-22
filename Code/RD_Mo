@@ -1,0 +1,26 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+//Area schema
+const AreaModel = mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    lines: [{
+        type: Schema.Types.ObjectId,
+        ref: 'LineModel'
+    }],
+});
+module.exports.deleteArea = function (id, callback) {
+    Area.remove({ _id: id }, callback);
+}
+
+
+module.exports.deleteArea = function (id, callback) {
+    Area.remove({ _id: id }, callback);
+}

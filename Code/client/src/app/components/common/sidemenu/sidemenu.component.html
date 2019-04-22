@@ -1,0 +1,40 @@
+<div class="side-navbar">
+    <ul class="list-group" *ngIf="authService.isRouteDisplay('home')">
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('home')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/home']">Regular Maintenance</li>
+    </ul>
+    <ul class="list-group" *ngIf="authService.isRouteDisplay('machine')">
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('machine')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/machine']">Machine</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('machinegroup')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/machinegroup']">Machine
+            group</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('area')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/area']">Area</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('line')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/line']">Line</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('reasons')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/reasons']">Reasons</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('document')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/document']">Documents</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('part')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/part']">Part</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('steps')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/steps']">Step Group</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('template')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/template']">Template</li>
+    </ul>
+    <ul class="list-group" *ngIf="authService.isRouteDisplay('user')">
+        <li *ngIf="authService.loggedIn() && authService.checkPrivilege('user')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/user']">User</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('usergroup')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/usergroup']">User
+            group</li>
+    </ul>
+    <ul class="list-group" *ngIf="authService.isRouteDisplay('settings')">
+        <li *ngIf="authService.loggedIn() && authService.checkPrivilege('settings')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/settings']">Settings</li>
+        <li *ngIf="authService.loggedIn()  && authService.checkPrivilege('import')" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact : true }" class="list-group-item" [routerLink]="['/import']">Import</li>
+    </ul>
+</div>

@@ -1,0 +1,49 @@
+<div class="col-sm-4 col-sm-offset-4">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="page-header text-center"><i class="fa fa-lock" aria-hidden="true"></i> Login</h2>
+      <form (submit)="onLoginSubmit()">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control" [(ngModel)]="username" name="username">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" [(ngModel)]="password" name="password">
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-4">
+            <input type="submit" class="btn btn-primary form-control" value="Login">
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-4  margin-top-20px">
+          <input type="submit" class="btn btn-primary form-control" (click)="openModal(template)" value="Forgot Password">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #template>
+  <div class="modal-body">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">Forgot Password</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" [(ngModel)]="fusername" name="fusername">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Close</button>
+      <button type="button" class="btn btn-primary" (click)="sendMail()">Send</button>
+    </div>
+  </div>
+</ng-template>

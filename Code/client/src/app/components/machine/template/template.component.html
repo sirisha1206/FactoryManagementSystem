@@ -1,0 +1,110 @@
+<div class="row" *ngIf="isList">
+  <div class="col-sm-12">
+    <h2 class="pull-left">Template List</h2>
+    <button class="btn btn-primary pull-right margin-top-20px" type="button" (click)="new()">New</button>
+  </div>
+  <div class="col-sm-3" *ngFor="let template of templates">
+    <div class="border-style" (click)="populate(template)">
+      <p>Name : {{template.name}}</p>
+      <p>Description: {{template.description}}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isList">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="pull-left">Template</h2>
+      <button class="btn btn-primary pull-right margin-top-20px" type="button" (click)="back()">Back to List</button>
+    </div>
+  </div>
+  <form>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" [(ngModel)]="template.name" name="name">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Equipent</label>
+          <select class="form-control" [(ngModel)]="template.machine" name="machine">
+            <option value="">--Select Machine--</option>
+            <option *ngFor="let equipent of equipentList" value="{{equipent._id}}">{{equipent.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Reason</label>
+          <select class="form-control" [(ngModel)]="template.reason" name="reason">
+            <option value="">--Select Reason--</option>
+            <option *ngFor="let reason of reasonList" value="{{reason._id}}">{{reason.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="template.description" name="description"></textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add Step Group</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="search" name="search" (input)="onSearchChange($event.target.value)">
+                <div *ngIf="showResults" id="txtSearch" class="auto-complete-style">
+                  <p *ngFor="let result of searchResults" (click)="selectedItem(result)" class="border-bottom">{{result.name}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <input type="button" class="form-control btn btn-primary" (click)="addStepGrpToTemplate(search)" value="Add">
+              </div>
+            </div>
+          </div>
+          <div>
+            <table class="table">
+              <tr>
+                <th>Step Group Name</th>
+                <th>Delete</th>
+              </tr>
+              <tr *ngFor="let step of template.stepgroups">
+                <td>{{step.name}}</td>
+                <td><button type="button" (click)="deleteStepGrp(step)"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2" *ngIf="isNew">
+        <button class="btn btn-primary form-control" type="button" (click)="save()">Save</button>
+      </div>
+      <div class="col-sm-2" *ngIf="!isNew">
+        <button class="btn btn-primary form-control" type="button" (click)="update()">Update</button>
+      </div>
+      <div class="col-sm-2" *ngIf="!isNew">
+        <button class="btn btn-primary form-control" type="button" (click)="delete()">Delete</button>
+      </div>
+      <div class="col-sm-2" *ngIf="isNew">
+        <button class="btn btn-primary form-control" type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>

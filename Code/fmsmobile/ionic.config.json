@@ -1,0 +1,7 @@
+{
+  "name": "fmsmobile",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

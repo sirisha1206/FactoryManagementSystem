@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2 class="pull-left">Regular Maintenance</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>Choose Machine</label>
+      <select class="form-control" [(ngModel)]="rMaintenance.machineId" name="machineId" (change)="machineNameChange($event)">
+        <option value="">--Select Machine--</option>
+        <option *ngFor="let c of machines" value="{{c._id}}">{{c.name}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>Schedule</label>
+      <select class="form-control" [(ngModel)]="rMaintenance.schedule" name="schedule">
+        <option value="">--Select Schedule--</option>
+        <option value="week">Every week</option>
+        <option value="month">Every month</option>
+        <option value="year">Every year</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2">
+    <button class="btn btn-primary form-control" type="button" (click)="update()">Save</button>
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-primary form-control" type="button" (click)="cancel()">Cancel</button>
+  </div>
+</div>

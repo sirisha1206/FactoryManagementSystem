@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Steps</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding class="steps-content">
+  <ion-list *ngFor="let step of steps">
+    <ion-item *ngFor="let s of step.steps" (click)="openReference(s)">{{s.name}}</ion-item>
+  </ion-list>
+</ion-content>

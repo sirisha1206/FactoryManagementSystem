@@ -1,0 +1,100 @@
+<div class="row" *ngIf="isList">
+  <div class="col-sm-12">
+    <h2 class="pull-left">Part List</h2>
+    <button class="btn btn-primary pull-right margin-top-20px" type="button" (click)="new()">New</button>
+  </div>
+  <div class="col-sm-3" *ngFor="let part of parts">
+    <div class="border-style" (click)="populate(part)">
+      <p>Name : {{part.name}}</p>
+      <p>Description: {{part.description}}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isList">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="pull-left">Part</h2>
+      <button class="btn btn-primary pull-right margin-top-20px" type="button" (click)="back()">Back to List</button>
+    </div>
+  </div>
+  <form>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" [(ngModel)]="part.name" name="name">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="part.description" name="description"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Serial part</label>
+          <div class="radio">
+            <label><input type="radio" value="yes" name="isSerial" [(ngModel)]="part.isSerial"> Yes</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" value="no" name="isSerial" [(ngModel)]="part.isSerial"> No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Available Quantity</label>
+            <input type="text" class="form-control" [(ngModel)]="part.availableQuantity" name="availableQuantity">
+          </div>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-sm-2" *ngIf="isNew">
+        <button class="btn btn-primary form-control" type="button" (click)="save()">Save</button>
+      </div>
+      <div class="col-sm-2" *ngIf="!isNew">
+        <button class="btn btn-primary form-control" type="button" (click)="update()">Update</button>
+      </div>
+      <div class="col-sm-2" *ngIf="!isNew">
+        <button class="btn btn-primary form-control" type="button" (click)="delete()">Delete</button>
+      </div>
+      <div class="col-sm-2" *ngIf="isNew">
+        <button class="btn btn-primary form-control" type="button" (click)="cancel()">Cancel</button>
+      </div>
+      <div class="col-sm-2">
+          <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#qrModal" (click)="generateQR()">Show QR</button>
+      </div>
+    </div>
+  </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">QR Code for {{part.name}}</h4>
+            </div>
+            <div class="modal-body">
+              <div *ngIf="part.name!==''" class="text-center">
+                <ngx-qrcode qrc-element-type="img" [qrc-value]="part.qrCode" id="print-section"></ngx-qrcode>
+              </div>
+              <div *ngIf="part.name===''" class="text-center">
+                  <h2>Please fill Part name</h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary"  *ngIf="part.name!==''" (click)="print()">Print</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

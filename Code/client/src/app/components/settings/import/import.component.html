@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="pull-left">Import</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label>Choose Module</label>
+            <select class="form-control" [(ngModel)]="module" name="module" (change)="modulechange($event)">
+                <option value="">--Select Module--</option>
+                <option *ngFor="let m of moduleList" value="{{m.value}}">{{m.key}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="module!==''">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-left">
+                        <label class="font-size-20px">{{sample.moduleName}}</label>
+                    </div>
+                    <div class="pull-right">
+                        <a href="{{sample.url}}" class="btn btn-primary">Download Sample Excel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="module!==''">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label>Upload file</label>
+            <input type="file" (change)="onFileChange($event)" multiple="false" #txtFile/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <h2>Import History</h2>
+        <div class="form-group">
+            <div class="panel panel-default" *ngFor="let importH of importHistory">
+                <div class="panel-body">
+                    <p>Module Name : {{importH.moduleName}}</p>
+                    <p>Date: {{importH.date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

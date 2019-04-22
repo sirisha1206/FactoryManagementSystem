@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ticket</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="machine-content">
+  <ion-label>Scan Machine</ion-label>
+  <ion-icon ios="ios-qr-scanner" md="md-qr-scanner" (click)="openQR()"></ion-icon>
+  {{scannedCode}}
+  <ion-item>
+    <ion-label>Machine Name</ion-label>
+    <ion-select [(ngModel)]="ticket.machineId" name="machineId">
+      <ion-option value="">--Select Machine--</ion-option>
+      <ion-option *ngFor="let m of machines" value="{{m._id}}">{{m.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Reason</ion-label>
+    <ion-select [(ngModel)]="ticket.reasonId" name="reasonId">
+      <ion-option value="">--Select Reason--</ion-option>
+      <ion-option *ngFor="let r of reasons" value="{{r._id}}">{{r.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <button ion-button full (click)="createTicket()">Create Ticket</button>
+</ion-content>

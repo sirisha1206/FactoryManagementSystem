@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let tic of tickets" (click)="getTemplateData(tic)">
+    <ion-card-header>
+      {{tic.machineName}}
+    </ion-card-header>
+    <ion-card-content>
+      {{tic.reasonName}}
+    </ion-card-content>
+  </ion-card>
+  <ion-fab right bottom (click)="logout()">
+    <button ion-fab color="danger"><ion-icon ios="ios-exit" md="md-exit"></ion-icon></button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2 class="pull-left">Settings</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>Choose Category</label>
+      <select class="form-control" [(ngModel)]="category" name="category" (change)="settingchange($event)">
+        <option value="">--Select Category--</option>
+        <option *ngFor="let c of categoryList" value="{{c._id}}">{{c.name}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="category!==''">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>Value</label>
+      <input type="text" class="form-control" [(ngModel)]="settingValue" name="settingValue"/>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="category!==''">
+  <div class="col-sm-2">
+    <button class="btn btn-primary form-control" type="button" (click)="save()">Save</button>
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-primary form-control" type="button" (click)="cancel()">Cancel</button>
+  </div>
+</div>
